@@ -1,0 +1,209 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url('../assets/font/Raleway.woff2') format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body, h1, h2, p {
+  margin: 0;
+}
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+}
+
+body {
+  min-block-size: 100vh;
+  min-block-size: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--ff-rale), sans-serif;
+  font-weight: 500;
+  background-color: var(--neutral-200);
+  line-height: 1.5;
+}
+
+:root {
+  --neutral-200: #EDF4F4;
+  --neutral-100: #FFFFFF;
+  --neutral-900: #000000;
+  --primary-500: #2ECF9B;
+  --ff-rale: 'Raleway';
+  --radius: 1em;
+  --shadow-sec: 0 0 1em hsl(from var(--neutral-900) h s l / .05), 0 0 2em hsl(from var(--neutral-900) h s l / .1);
+  --shadow-btn: 0 .3em .2em hsl(from var(--primary-500) h s l / .4), 0 .5em .5em hsl(from var(--primary-500) h s l / .1);
+}
+
+/* Layout */
+.grid {
+  display: grid;
+}
+.section {
+  --radius: .3em;
+  margin: 3em .5em;
+  padding: 3em 1.5em 0;
+  inline-size: clamp(20rem, 90vw, 31rem);
+  justify-items: center;
+  background-color: var(--neutral-100);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sec);
+}
+.section-content {
+  grid-template-areas: 
+    "ttle"
+    "para"
+    "form";
+  gap: .5em;
+}
+.card-container {
+  margin-block: 3em;
+  padding: 2em 1.5em;
+  inline-size: fit-content;
+  justify-content: center;
+  gap: 3em;
+  background-color: var(--neutral-200);
+  border-radius: var(--radius);
+}
+
+/* Form */
+.form {
+  grid-area: form;
+  margin-top: 1.2em;
+  gap: 1em;
+}
+.options,
+.btn {
+  padding: .6em .5em;
+  border-radius: var(--radius);
+  cursor: pointer;
+  line-height: 1.5;
+}
+.options {
+  font-weight: 600;
+  border: .1em solid hsl(from var(--neutral-900) h s l / .2);
+  transition: background-color .3s ease;
+}
+.btn {
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  background-color: var(--primary-500);
+  box-shadow: var(--shadow-btn);
+  color: var(--neutral-100);
+  letter-spacing: 1px;
+  transition: opacity .3s ease;
+  text-shadow: 0 0 .1em var(--neutral-900);
+}
+
+/* Card */
+.card {
+  max-inline-size: 22rem;
+  display: grid;
+  grid-template-areas: 
+    "ico ttl"
+    "... par";
+    align-items: center;
+    gap: .8em;
+  }
+.card-ico {
+  grid-area: ico;
+  inline-size: 1.5rem;
+  color: var(--primary-500);
+}
+.card-ttl {
+  grid-area: ttl;
+}
+.card-par {
+  grid-area: par;
+}
+
+/* Typography */
+.section-ttl,
+.card-ttl {
+  line-height: 1.2;
+}
+.section-ttl {
+  font-size: clamp(1.5rem, 1rem + 2vw, 1.8rem);
+}
+.card-ttl {
+  inline-size: min-content;
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.4rem);
+}
+.card-par,
+.section-par {
+  font-size: clamp(1rem, .5rem + 2.1vw, 1.125rem);
+}
+.attribution {
+  padding-bottom: 1em;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.attribution-cta {
+  font-weight: 800;
+  color: inherit;
+  text-decoration-thickness: .1rem;
+  text-underline-offset: .15rem;
+}
+
+
+/* Media Queries */
+@media (width >= 1024px) {
+  .section {
+    padding-inline: 2.5em;
+    inline-size: 1000px;
+  }
+  .section-content {
+    inline-size: 100%;
+    grid-template-columns: 21rem 1fr;
+    grid-template-areas: 
+      "ttl form"
+      "par form";
+    align-items: center;
+  }
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .form {
+    margin-left: 2em;
+    grid-template-columns: 35% 35% 1fr;
+  }
+}
+@media (width >= 1366px) {
+  .section {
+    inline-size: 1200px;
+  }
+}
+
+
+/* States */
+*:focus-visible {
+  outline: .15rem dotted var(--primary-500);
+  outline-offset: .15rem;
+}
+@media (hover:hover) {
+  .btn:hover {
+    opacity: .7;
+  }
+  .options:hover {
+    background-color: hsl(from var(--primary-500) h s l / .1);
+  }
+}
+
