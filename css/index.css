@@ -157,6 +157,7 @@ body {
   letter-spacing: 1px;
 }
 .attribution-cta {
+  margin-inline: .25rem;
   font-weight: 800;
   color: inherit;
   text-decoration-thickness: .1rem;
@@ -196,7 +197,11 @@ body {
 /* States */
 *:focus-visible {
   outline: .15rem dotted var(--primary-500);
-  outline-offset: .15rem;
+  outline-offset: .2rem;
+}
+.attribution-cta:focus-visible {
+  outline-color: currentColor;
+  text-decoration: none;
 }
 @media (hover:hover) {
   .btn:hover {
